@@ -15,6 +15,18 @@ let board = [
 	['', '', ''],
 ];
 
+let playerOne = 'Player One';
+let playerTwo = 'Player Two';
+
+const playerChoose = () => {
+	playerOne = prompt(`Name of the player that selects 'X'`);
+	playerTwo = prompt(`Name of the player that selects 'O'`);
+
+	let output = playerOne + ` : ${currentMarker}`;
+	let output2 = playerTwo + ` : O`;
+	document.getElementById('result').innerHTML = output + ' ' + output2;
+};
+
 // is called when a square is clicked. "this" = element here
 const handleClick = (element) => {
 	// check to see if the square clicked has anything in it, if not continue
@@ -55,11 +67,28 @@ const updateBoard = (id) => {
 	// HINT: in your browser open up the dev tools -> console
 };
 
+const updateScore = () => {
+	let scoreX = 0;
+	let scoreO = 0;
+	let playerScoreX = document.getElementById('scoreX');
+	let playerScoreO = document.getElementById('scoreO');
+	if (currentMarker === 'X') {
+		playerScoreX.innerHTML = scoreX++;
+	} else {
+		playerScoreO.innerHTML = scoreO++;
+	}
+};
+
 const checkForWin = () => {
 	// calls each checkForWin possibility and if any are true gives a page alert,
 	if (horizontalWin() || verticalWin() || diagonalWin()) {
 		// **BONUS** you could make the dismissal of this alert window reset the board...
-		window.alert(`Player ${currentMarker} won!`);
+		if (currentMarker === 'X') {
+			window.alert(`Congrats ${playerOne}, you won with 'X'!`);
+		} else {
+			window.alert(`Congrats ${playerTwo}, you won with 'O'!`);
+		}
+		updateScore();
 		resetBoard();
 	} else {
 		// if no win, change the marker from X to O, or O to X for the next player.
