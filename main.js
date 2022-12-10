@@ -73,11 +73,12 @@ const diagonalWin = () => {
 
 //Declaring a function that determines when an 'X' or an 'O' is used per player turn
 const changeMarker = () => {
-	if (playerTurn == 'X') {
-		playerTurn = 'O';
-	} else {
-		playerTurn = 'X';
-	}
+	// if (playerTurn == 'X') {
+	// 	playerTurn = 'O';
+	// } else {
+	// 	playerTurn = 'X';
+	// }
+	playerTurn === 'X' ? (playerTurn = 'O') : (playerTurn = 'X');
 };
 
 //Checking for win horizontally, vertically amd diagonally.  If no winner, it will change
