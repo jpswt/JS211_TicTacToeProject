@@ -92,6 +92,14 @@ const checkForWin = () => {
 	// Your code here call each of the check for types of wins
 };
 
+const reset = () => {
+	board = [
+		[' ', ' ', ' '],
+		[' ', ' ', ' '],
+		[' ', ' ', ' '],
+	];
+};
+
 //Game Board function that determines if a space is empty, will prompt a player for
 // their marker to place, will then change the marker according to player turn and
 //check for a win.  If not a win, the marker will change and it will be the next player
@@ -101,6 +109,7 @@ const ticTacToe = (row, column) => {
 		board[row][column] = playerTurn;
 		if (checkForWin()) {
 			console.log(`Congrats, ${playerTurn} wins! `);
+			reset();
 		} else {
 			changeMarker();
 		}
